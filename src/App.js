@@ -1,6 +1,8 @@
 import { makeStyles } from '@material-ui/styles';
 import { useState } from 'react';
 import * as ReactBootStarp from 'react-bootstrap'
+import Fab from '@material-ui/core/Fab'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 
 
 const useStyle = makeStyles({
@@ -53,6 +55,10 @@ const App = () => {
              {annaCost.map(renderCosts)}
             </tbody>
       </ReactBootStarp.Table>
+      <Fab>
+        <AddCircleIcon />
+        
+      </Fab>
       
     </div>
   );
