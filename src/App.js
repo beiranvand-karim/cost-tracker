@@ -10,7 +10,6 @@ const useStyle = makeStyles({
     textAlign:'center'
   },
     iconColor:{
- add-table
       color:'#FF5733',
       backgroundColor:'#FFZ'
     }
