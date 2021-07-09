@@ -1,24 +1,40 @@
-import './App.css';
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/styles';
 import { useState } from 'react';
-import Modal from './Modal';
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import * as ReactBootStarp from 'react-bootstrap'
+
 
 const useStyle = makeStyles({
   actionStyle:{
     marginTop:20,
-    color:'@FF2232'
+    color:'@FF2232',
+    textAlign:'center'
   },
     iconColor:{
-      color:'#FF5734',
+ add-table
+      color:'#FF5733',
+      backgroundColor:'#FFZ'
     }
 })
 
-function App() {
+const App = () => {
+  const annaCost = [
+    {amount:"10000$",name:"ice cream",reason:"summer"},
+    {amount:"15120$",name:"bank",reason:"save"},
+    {amount:"14000$",name:"dinner",reason:"food"},
+    {amount:"12000$",name:"football",reason:"gym"}
+  ]
+  const renderCosts =(cost , index)=>{
+    return(
+      <tr key={index}>
+        <td>{cost.amount} </td>
+        <td>{cost.name} </td>
+        <td>{cost.reason}</td>
+      </tr>
+
+
+    )
+    
+  }
   
   const classes = useStyle();
   const [setPopup,setIsPopup] = useState(false)
@@ -26,44 +42,19 @@ function App() {
 
   return (
     <div className="App">
-      <Fab className ={classes.actionStyle} onClick={()=> setIsPopup(true)}>
-        <AddIcon className={classes.iconColor}/>
-      </Fab>
-      <Modal open ={setPopup}>
-        <Typography>
-          <form >
-            <TextField
-            className ={classes.actionStyle}
-            variant='outlined'
-            label='Name'
-            fullWidth
-            multiline
-             />
-            <TextField
-            className ={classes.actionStyle}
-            variant='outlined'
-            label='Family'
-            fullWidth
-            multiline
-             />
-            <TextField
-            className ={classes.actionStyle}
-            variant='outlined'
-            label='Address'
-            fullWidth
-            multiline
-            rows={2} />
-
-            <Button variant='contained' className={classes.actionStyle}
-            onClick={()=> console.log('your form submitted')}
-             >
-              submit
-            </Button>
-            
-          </form>
-        </Typography>
-        
-      </Modal>
+      <ReactBootStarp.Table striped hover bordered>
+            <thead>
+              <tr>
+                <th>amount</th>
+                <th>name</th>
+                <th>reason</th>
+              </tr>
+            </thead>
+            <tbody>
+             {annaCost.map(renderCosts)}
+            </tbody>
+      </ReactBootStarp.Table>
+      
     </div>
   );
 }
