@@ -1,21 +1,37 @@
-import { makeStyles } from '@material-ui/styles';
-import { useState } from 'react';
+
 import * as ReactBootStarp from 'react-bootstrap'
 import Fab from '@material-ui/core/Fab'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import React from 'react';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 
-const useStyle = makeStyles({
-  actionStyle:{
-    marginTop:20,
-    color:'@FF2232',
-    textAlign:'center'
-  },
-    iconColor:{
-      color:'#FF5733',
-      backgroundColor:'#FFZ'
-    }
-})
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }),
+);
+
+
+
+
 
 const App = () => {
   const annaCost = [
@@ -24,7 +40,11 @@ const App = () => {
     {amount:"14000$",name:"dinner",reason:"food"},
     {amount:"12000$",name:"football",reason:"gym"}
   ]
+  const[open,setOpen] = React.useState(false);
+  const classes = useStyles(); 
   const renderCosts =(cost , index)=>{
+
+  
     return(
       <tr key={index}>
         <td>{cost.amount} </td>
@@ -37,8 +57,8 @@ const App = () => {
     
   }
   
-  const classes = useStyle();
-  const [setPopup,setIsPopup] = useState(false)
+
+ 
 
 
   return (
@@ -55,11 +75,49 @@ const App = () => {
              {annaCost.map(renderCosts)}
             </tbody>
       </ReactBootStarp.Table>
-      <Fab>
-        <AddCircleIcon />
-        
-      </Fab>
-      
+      <button type="button" onClick={()=> setOpen(true)}>
+        react-transition-group
+      </button>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={()=> setOpen(false)}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <Typography>
+              <TextField
+              fullWidth
+              variant="outlined"
+              margin="20"
+              label="name" />
+              <TextField
+              fullWidth
+              variant="outlined"
+              label="lase name"
+               />
+               <Button
+               variant="contained"
+               >
+                 Add
+               </Button>
+               <Button onClick ={()=> setOpen(false)}
+               variant="contained" >
+                 Cancel
+               </Button>
+            </Typography>
+          </div>
+        </Fade>
+      </Modal> 
+
+
     </div>
   );
 }
