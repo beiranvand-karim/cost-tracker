@@ -70,6 +70,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### 'main project'
+
  Cost tracker
 Purpose and scope
 The purpose of this assignment is to create a small but still realistic project to form the basis of a discussion on how you approach web development. We
