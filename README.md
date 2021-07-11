@@ -68,3 +68,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### 'main project'
+ Cost tracker
+Purpose and scope
+The purpose of this assignment is to create a small but still realistic project to form the basis of a discussion on how you approach web development. We
+expect the project should not take more than a total 4-8 hours of work time to complete. If it takes much longer than that contact us to discuss reducing the
+scope to make it possible to complete in that time.
+Scenario
+Anna wants to keep better track of her money. To help Anna do this, build a web app that allows her to enter the costs she has as she makes them, and
+show how much it adds up to.
+Requirements
+Your web application should:
+Allow the user to add cost items with a category and a comment for what it was
+Show all cost items in a list
+Show the total sum of the transactions
+Allow the user to filter transactions by category
+Use tooling you are familiar with. We use React, but if you are not familiar with React, it is better to use something you know well.
+You don't need to build a storage backend, losing state on reload is fine. Using localStorage is also ok.
+The application should work on both desktop and mobile devices with a clean and uncomplicated UI.
+The project should be available and runnable for us, by following instructions in the project. It should preferably be available on GitHub or similar site.
+What we will be discussing
+Overall code structure
+Naming, commenting
+Documentation
+Design decisions
+Extensibility
+Testing
+Error handling
+How styling is applied to the application
+Responsive design
+User experience in the application
