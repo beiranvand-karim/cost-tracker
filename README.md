@@ -69,17 +69,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-### 'main project'
+### main project
 
-# 'Cost tracker'
-## 'Scenario'
+# Cost tracker
+## Scenario
 
 Anna wants to keep better track of her money. To help Anna do this, build a web app that allows her to enter the costs she has as she makes them, and
 show how much it adds up to.
 
-## 'Requirements'
+## Requirements
 
-#### 'Your web application should:'
+#### Your web application should:
 Allow the user to add cost items with a category and a comment for what it was
 Show all cost items in a list
 Show the total sum of the transactions
@@ -89,7 +89,7 @@ You don't need to build a storage backend, losing state on reload is fine. Using
 The application should work on both desktop and mobile devices with a clean and uncomplicated UI.
 The project should be available and runnable for us, by following instructions in the project. It should preferably be available on GitHub or similar site.
 
-## 'What we will be discussing'
+## What we will be discussing
 
 Overall code structure
 Naming, commenting
