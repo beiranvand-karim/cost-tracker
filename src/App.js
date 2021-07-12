@@ -10,6 +10,10 @@ import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 
 
@@ -26,6 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
   }),
 );
 
@@ -35,10 +43,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const App = () => {
   const annaCost = [
-    {amount:"10000$",name:"ice cream",reason:"summer"},
-    {amount:"15120$",name:"bank",reason:"save"},
-    {amount:"14000$",name:"dinner",reason:"food"},
-    {amount:"12000$",name:"football",reason:"gym"}
+    {CostItem :"",Category:"",Description:""},
+    {CostItem:"",Category:"",Description:""},
+    {CostItem:"",Category:"",Description:""},
+    {CostItem:"",Category:"",Description:""}
   ]
   const[open,setOpen] = React.useState(false);
   const classes = useStyles(); 
@@ -47,9 +55,9 @@ const App = () => {
   
     return(
       <tr key={index}>
-        <td>{cost.amount} </td>
-        <td>{cost.name} </td>
-        <td>{cost.reason}</td>
+        <td>{cost.CostItem} </td>
+        <td>{cost.Category} </td>
+        <td>{cost.Description}</td>
       </tr>
 
 
@@ -66,9 +74,9 @@ const App = () => {
       <ReactBootStarp.Table striped hover bordered>
             <thead>
               <tr>
-                <th>amount</th>
-                <th>name</th>
-                <th>reason</th>
+                <th>CostItem</th>
+                <th>Category</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -97,12 +105,23 @@ const App = () => {
               fullWidth
               variant="outlined"
               margin="20"
-              label="name" />
-              <TextField
-              fullWidth
-              variant="outlined"
-              label="lase name"
-               />
+              label="Cost Item" />
+
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
+        <Select native defaultValue="" id="grouped-native-select">
+            <option value={1}>  food </option>
+            <option value={2}> clothes </option>
+            <option value={3}> furniture </option>
+            <option value={4}> gym </option>
+          
+        </Select>
+      </FormControl>
+     <div>
+     <TextareaAutosize aria-label="empty textarea" placeholder="Empty" />
+     </div>
+     
+
                <Button
                variant="contained"
                >
