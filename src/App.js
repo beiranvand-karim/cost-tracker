@@ -35,10 +35,7 @@ const useStyles = makeStyles((theme) =>
 
 const App = () => {
   const annaCost = [
-    {CostItem :"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""}
+    
   ]
 
   const[open,setOpen] = React.useState(false);
@@ -70,7 +67,7 @@ const App = () => {
             </tbody>
       </ReactBootStarp.Table>
       <button type="button" onClick={()=> setOpen(true)}>
-        react-transition-group
+        Add Cost Item
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
