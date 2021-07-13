@@ -1,7 +1,5 @@
 
 import * as ReactBootStarp from 'react-bootstrap'
-import Fab from '@material-ui/core/Fab'
-import AddCircleIcon from '@material-ui/icons/AddCircle'
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -15,7 +13,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     modal: {
       display: 'flex',
