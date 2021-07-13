@@ -15,8 +15,6 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     modal: {
@@ -37,10 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
-
-
 const App = () => {
   const annaCost = [
     {CostItem :"",Category:"",Description:""},
@@ -48,26 +42,20 @@ const App = () => {
     {CostItem:"",Category:"",Description:""},
     {CostItem:"",Category:"",Description:""}
   ]
-  const[open,setOpen] = React.useState(false);
-  const classes = useStyles(); 
-  const renderCosts =(cost , index)=>{
 
-  
+  const[open,setOpen] = React.useState(false);
+
+  const classes = useStyles(); 
+
+  const renderCosts =(cost , index)=>{
     return(
       <tr key={index}>
         <td>{cost.CostItem} </td>
         <td>{cost.Category} </td>
         <td>{cost.Description}</td>
       </tr>
-
-
-    )
-    
+    ) 
   }
-  
-
- 
-
 
   return (
     <div className="App">
@@ -120,8 +108,6 @@ const App = () => {
      <div>
      <TextareaAutosize aria-label="empty textarea" placeholder="Empty" />
      </div>
-     
-
                <Button
                variant="contained"
                >
@@ -135,8 +121,6 @@ const App = () => {
           </div>
         </Fade>
       </Modal> 
-
-
     </div>
   );
 }
