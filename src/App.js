@@ -12,6 +12,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { useState } from 'react';
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -35,22 +37,41 @@ const useStyles = makeStyles((theme) =>
 
 const App = () => {
   const annaCost = [
+<<<<<<< HEAD
     {CostItem :"",Category:"",Description:""},
     {CostItem:"",Category:"",Description:""},
     {CostItem:"",Category:"",Description:""},
     {CostItem:"",Category:"",Description:""}
+=======
+   
+>>>>>>> bddb1e6... added form data to console
   ]
-
+  annaCost.push(
+    {costItem:"dd",category:"sss",description:"ddd"}
+  )
+  
+  
   const[open,setOpen] = React.useState(false);
 
+  const [title,setTitle] = useState('');
+
+  const [title2,setTitle2] = useState('');
+
+  const [title3,setTitle3] = useState('');
+
   const classes = useStyles(); 
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log(title,title2,title3);
+  }
 
   const renderCosts =(cost , index)=>{
     return(
       <tr key={index}>
-        <td>{cost.CostItem} </td>
-        <td>{cost.Category} </td>
-        <td>{cost.Description}</td>
+        <td>{cost.costItem} </td>
+        <td>{cost.category} </td>
+        <td>{cost.description}</td>
       </tr>
     ) 
   }
@@ -60,9 +81,9 @@ const App = () => {
       <ReactBootStarp.Table striped hover bordered>
             <thead>
               <tr>
-                <th>CostItem</th>
-                <th>Category</th>
-                <th>Description</th>
+                <th>costItem</th>
+                <th>category</th>
+                <th>description</th>
               </tr>
             </thead>
             <tbody>
@@ -86,8 +107,11 @@ const App = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <form onSubmit={handleSubmit} >
             <Typography>
               <TextField
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               fullWidth
               variant="outlined"
               margin="20"
@@ -95,19 +119,24 @@ const App = () => {
 
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
-        <Select native defaultValue="" id="grouped-native-select">
-            <option value={1}>  food </option>
-            <option value={2}> clothes </option>
-            <option value={3}> furniture </option>
-            <option value={4}> gym </option>
+        <Select native defaultValue="" id="grouped-native-select"
+        value={title3}
+        onChange={(e)=>setTitle3(e.target.value)}
+         >
+            <option value="food">  food </option>
+            <option value="clothes" > clothes </option>
+            <option value="furniture" > furniture </option>
+            <option value="gym" > gym </option>
           
         </Select>
       </FormControl>
      <div>
-     <TextareaAutosize aria-label="empty textarea" placeholder="Empty" />
+     <TextareaAutosize value={title2} 
+     onChange={(e)=>setTitle2(e.target.value)} aria-label="empty textarea" placeholder="Empty" />
      </div>
                <Button
                variant="contained"
+               onClick={handleSubmit}
                >
                  Add
                </Button>
@@ -116,6 +145,7 @@ const App = () => {
                  Cancel
                </Button>
             </Typography>
+            </form>
           </div>
         </Fade>
       </Modal> 
