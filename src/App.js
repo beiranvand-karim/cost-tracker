@@ -37,14 +37,7 @@ const useStyles = makeStyles((theme) =>
 
 const App = () => {
   const annaCost = [
-<<<<<<< HEAD
-    {CostItem :"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""},
-    {CostItem:"",Category:"",Description:""}
-=======
-   
->>>>>>> bddb1e6... added form data to console
+
   ]
   annaCost.push(
     {costItem:"dd",category:"sss",description:"ddd"}
@@ -91,7 +84,7 @@ const App = () => {
             </tbody>
       </ReactBootStarp.Table>
       <button type="button" onClick={()=> setOpen(true)}>
-        react-transition-group
+        Add Cost Item
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
