@@ -36,15 +36,14 @@ const useStyles = makeStyles((theme) =>
 );
 
 const App = () => {
-  const annaCost = [
-
-  ]
-  annaCost.push(
-    {costItem:"dd",category:"sss",description:"ddd"}
-  )
+  const [annaCost,setAnnaCost] =useState( [{
+    costItem:"kabab",category:"food",description:"for fun"}
+  ])
+  
+ 
   
   
-  const[open,setOpen] = React.useState(false);
+  const[open,setOpen] = useState(false);
 
   const [title,setTitle] = useState('');
 
@@ -56,18 +55,11 @@ const App = () => {
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    console.log(title,title2,title3);
+    setAnnaCost(values=>setAnnaCost([...values,{costItem:title,category:title2,description:title3}]))
+    setOpen(false)
   }
 
-  const renderCosts =(cost , index)=>{
-    return(
-      <tr key={index}>
-        <td>{cost.costItem} </td>
-        <td>{cost.category} </td>
-        <td>{cost.description}</td>
-      </tr>
-    ) 
-  }
+  
 
   return (
     <div className="App">
@@ -100,7 +92,7 @@ const App = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <form onSubmit={handleSubmit} >
+            <form  >
             <Typography>
               <TextField
               value={title}
@@ -113,8 +105,7 @@ const App = () => {
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
         <Select native defaultValue="" id="grouped-native-select"
-        value={title3}
-        onChange={(e)=>setTitle3(e.target.value)}
+        value={title2} onChange={(e)=>setTitle2(e.target.value)}
          >
             <option value="food">  food </option>
             <option value="clothes" > clothes </option>
@@ -124,8 +115,8 @@ const App = () => {
         </Select>
       </FormControl>
      <div>
-     <TextareaAutosize value={title2} 
-     onChange={(e)=>setTitle2(e.target.value)} aria-label="empty textarea" placeholder="Empty" />
+     <TextareaAutosize value={title3} 
+     onChange={(e)=>setTitle3(e.target.value)} aria-label="empty textarea" placeholder="Empty" />
      </div>
                <Button
                variant="contained"
