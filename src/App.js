@@ -1,4 +1,3 @@
-
 import * as ReactBootStarp from 'react-bootstrap'
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
@@ -13,14 +12,17 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useState } from 'react';
+import { Height, Translate } from '@material-ui/icons';
+
 
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     modal: {
       display: 'flex',
-      alignItems: 'center',
       justifyContent: 'center',
+      alignItems: 'center',
+      
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
@@ -31,6 +33,13 @@ const useStyles = makeStyles((theme) =>
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
+    },
+    testButton:{
+      position:'absolute',
+      right:"50%",
+      left:"50%",
+      transform: 'translate(-50%, -50%)',
+      marginTop:20
     },
   }),
 );
@@ -59,7 +68,15 @@ const App = () => {
     setOpen(false)
   }
 
-  
+  const renderCosts =(cost , index)=>{
+    return(
+      <tr key={index}>
+        <td>{cost.costItem} </td>
+        <td>{cost.category} </td>
+        <td>{cost.description}</td>
+      </tr>
+    ) 
+  }
 
   return (
     <div className="App">
@@ -75,9 +92,11 @@ const App = () => {
              {annaCost.map(renderCosts)}
             </tbody>
       </ReactBootStarp.Table>
-      <button type="button" onClick={()=> setOpen(true)}>
+      <button type="button" onClick={()=> setOpen(true)} 
+      className={classes.testButton} >
         Add Cost Item
       </button>
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -115,21 +134,27 @@ const App = () => {
         </Select>
       </FormControl>
      <div>
-     <TextareaAutosize value={title3} 
+     <TextareaAutosize  value={title3} 
      onChange={(e)=>setTitle3(e.target.value)} aria-label="empty textarea" placeholder="Empty" />
      </div>
-               <Button
-               variant="contained"
-               onClick={handleSubmit}
-               >
-                 Add
-               </Button>
-               <Button onClick ={()=> setOpen(false)}
-               variant="contained" >
-                 Cancel
-               </Button>
+     
+      <Button
+      variant="contained"
+      onClick={handleSubmit}
+
+      >
+        Add
+      </Button>
+      <Button onClick ={()=> setOpen(false)}
+      variant="contained" >
+        Cancel
+      </Button>
+      
+     
+               
             </Typography>
             </form>
+            
           </div>
         </Fade>
       </Modal> 
