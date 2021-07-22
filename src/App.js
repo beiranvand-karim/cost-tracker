@@ -13,6 +13,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useState } from 'react';
 import { Height, Translate } from '@material-ui/icons';
+import { width } from 'dom-helpers';
+
 
 
 
@@ -39,8 +41,31 @@ const useStyles = makeStyles((theme) =>
       right:"50%",
       left:"50%",
       transform: 'translate(-50%, -50%)',
-      marginTop:20
+      marginTop:40
     },
+    tableStyle:{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems:'center',
+      alignContent:'center',
+      flexDirection:'column',
+      marginTop:40,
+    },
+    costStyle:{
+      alignSelf:'center',
+      textAlign:'center'
+
+    },
+    catgryStyle:{
+      order:1
+    },
+    dscrpStyle:{
+      order:2
+    },
+    bodyStyle:{
+      
+    }
+ 
   }),
 );
 
@@ -80,20 +105,23 @@ const App = () => {
 
   return (
     <div className="App">
-      <ReactBootStarp.Table striped hover bordered>
-            <thead>
-              <tr>
+      <ReactBootStarp.Table 
+      bordered striped hover 
+      className={classes.tableStyle}
+       >
+            <thead  >
+              <tr >
                 <th>costItem</th>
                 <th>category</th>
                 <th>description</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={classes.bodyStyle} >
              {annaCost.map(renderCosts)}
             </tbody>
       </ReactBootStarp.Table>
       <button type="button" onClick={()=> setOpen(true)} 
-      className={classes.testButton} >
+      className={classes.testButton}>
         Add Cost Item
       </button>
       
@@ -137,18 +165,23 @@ const App = () => {
      <TextareaAutosize  value={title3} 
      onChange={(e)=>setTitle3(e.target.value)} aria-label="empty textarea" placeholder="Empty" />
      </div>
-     
-      <Button
+
+     <div className="btn-style" >
+     <Button
       variant="contained"
       onClick={handleSubmit}
-
+      className={classes.customStyle}
       >
         Add
       </Button>
       <Button onClick ={()=> setOpen(false)}
-      variant="contained" >
+      variant="contained"
+      className={classes.customStyle} >
         Cancel
       </Button>
+     </div>
+     
+      
       
      
                
