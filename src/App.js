@@ -12,8 +12,8 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useState } from 'react';
-import { Height, Translate } from '@material-ui/icons';
-import { width } from 'dom-helpers';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 
 
@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) =>
     },
     testButton:{
       position:'absolute',
-      right:"50%",
-      left:"50%",
+      right:-16,
+      bottom:-16,
       transform: 'translate(-50%, -50%)',
       marginTop:40
     },
@@ -70,8 +70,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 const App = () => {
-  const [annaCost,setAnnaCost] =useState( [{
-    costItem:"kabab",category:"food",description:"for fun"}
+  const [annaCost,setAnnaCost] =useState( [
   ])
   
  
@@ -85,6 +84,8 @@ const App = () => {
 
   const [title3,setTitle3] = useState('');
 
+  const[showTable,setShowTable] = useState(false);
+
   const classes = useStyles(); 
 
   const handleSubmit=(e)=>{
@@ -92,6 +93,14 @@ const App = () => {
     setAnnaCost(values=>setAnnaCost([...values,{costItem:title,category:title2,description:title3}]))
     setOpen(false)
   }
+  const handleDisplayTable=()=>{
+    if(annaCost.length<1){
+      setShowTable(false);
+    }else if(annaCost.length>1){
+      setShowTable(true);
+    }
+  }
+  
 
   const renderCosts =(cost , index)=>{
     return(
@@ -105,7 +114,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <ReactBootStarp.Table 
+
+      {annaCost.length > 0 && (      <ReactBootStarp.Table 
       bordered striped hover 
       className={classes.tableStyle}
        >
@@ -116,14 +126,14 @@ const App = () => {
                 <th>description</th>
               </tr>
             </thead>
-            <tbody className={classes.bodyStyle} >
+            <tbody  >
              {annaCost.map(renderCosts)}
             </tbody>
-      </ReactBootStarp.Table>
-      <button type="button" onClick={()=> setOpen(true)} 
-      className={classes.testButton}>
-        Add Cost Item
-      </button>
+      </ReactBootStarp.Table>)}
+      <Fab className={classes.testButton}
+      onClick={()=> setOpen(true)} >
+        <AddIcon/>
+      </Fab>
       
       <Modal
         aria-labelledby="transition-modal-title"
@@ -171,6 +181,7 @@ const App = () => {
       variant="contained"
       onClick={handleSubmit}
       className={classes.customStyle}
+      
       >
         Add
       </Button>
