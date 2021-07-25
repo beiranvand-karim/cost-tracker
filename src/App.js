@@ -1,4 +1,10 @@
-import * as ReactBootStarp from 'react-bootstrap'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -14,9 +20,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useState } from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
-
-
+import styled from 'styled-components'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -24,7 +28,6 @@ const useStyles = makeStyles((theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
@@ -50,6 +53,7 @@ const useStyles = makeStyles((theme) =>
       alignContent:'center',
       flexDirection:'column',
       marginTop:40,
+      
     },
     costStyle:{
       alignSelf:'center',
@@ -68,13 +72,20 @@ const useStyles = makeStyles((theme) =>
  
   }),
 );
+const useStyles2 = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+});
+const showModal1 = styled(Modal)`
+   display:flex;
+   justify-content: center;
+   align-items: center;
+ `;
+
 
 const App = () => {
-  const [annaCost,setAnnaCost] =useState( [
-  ])
-  
- 
-  
+  const [annaCost,setAnnaCost] =useState( [])
   
   const[open,setOpen] = useState(false);
 
@@ -82,54 +93,44 @@ const App = () => {
 
   const [title2,setTitle2] = useState('');
 
-  const [title3,setTitle3] = useState('');
-
-  const[showTable,setShowTable] = useState(false);
+  const [title3,setTitle3] = useState('');  
 
   const classes = useStyles(); 
+  const classes2 = useStyles2();
 
   const handleSubmit=(e)=>{
     e.preventDefault();
     setAnnaCost(values=>setAnnaCost([...values,{costItem:title,category:title2,description:title3}]))
     setOpen(false)
   }
-  const handleDisplayTable=()=>{
-    if(annaCost.length<1){
-      setShowTable(false);
-    }else if(annaCost.length>1){
-      setShowTable(true);
-    }
-  }
-  
 
-  const renderCosts =(cost , index)=>{
-    return(
-      <tr key={index}>
-        <td>{cost.costItem} </td>
-        <td>{cost.category} </td>
-        <td>{cost.description}</td>
-      </tr>
-    ) 
-  }
 
   return (
     <div className="App">
 
-      {annaCost.length > 0 && (      <ReactBootStarp.Table 
-      bordered striped hover 
-      className={classes.tableStyle}
-       >
-            <thead  >
-              <tr >
-                <th>costItem</th>
-                <th>category</th>
-                <th>description</th>
-              </tr>
-            </thead>
-            <tbody  >
-             {annaCost.map(renderCosts)}
-            </tbody>
-      </ReactBootStarp.Table>)}
+<TableContainer component={Paper}>
+      {annaCost.length> 0 && ( <Table className={classes.tableStyle} hover >
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">costItem</TableCell>
+            <TableCell align="right">category</TableCell>
+            <TableCell align="right">description</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {annaCost.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.costItem}</TableCell>
+              <TableCell align="right">{row.category}</TableCell>
+              <TableCell align="right">{row.description}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table> )}
+    </TableContainer>
       <Fab className={classes.testButton}
       onClick={()=> setOpen(true)} >
         <AddIcon/>
@@ -191,11 +192,6 @@ const App = () => {
         Cancel
       </Button>
      </div>
-     
-      
-      
-     
-               
             </Typography>
             </form>
             
