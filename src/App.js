@@ -67,18 +67,6 @@ const useStyles = makeStyles((theme) =>
     bodyStyle: {},
   })
 );
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
-const showModal1 = styled(Modal)`
-  && {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
 
 const App = () => {
   const [annaCost, setAnnaCost] = useState([]);
@@ -133,7 +121,7 @@ const App = () => {
         <AddIcon />
       </Fab>
 
-      <showModal1
+      <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -204,7 +192,7 @@ const App = () => {
             </form>
           </div>
         </Fade>
-      </showModal1>
+      </Modal>
     </div>
   );
 };
