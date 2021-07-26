@@ -1,13 +1,12 @@
- import React from 'react'
- 
- export default function Modal({open,children,onClose}){
+import React from 'react';
 
-     if(!open) return null
+export default function Modal({ open, children, onClose }) {
+  if (!open) return null;
 
-     return (
-            <div >
-                <button onClick={onClose}>close Modal</button>
-                {children}
-            </div>
-     )
- }
+  return (
+    <div>
+      <button onClick={onClose}>close Modal</button>
+      {children}
+    </div>
+  );
+}
