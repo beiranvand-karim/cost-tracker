@@ -20,7 +20,6 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useState } from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
