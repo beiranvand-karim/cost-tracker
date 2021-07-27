@@ -1,25 +1,12 @@
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import AddUserFab from './AddUserFab';
+import UserModal from './UserModal';
+import UsersTable from './UsersTable';
+=======
+
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -72,6 +59,8 @@ const App = () => {
 
   const [open, setOpen] = useState(false);
 
+  const [open1, setOpen1] = useState(true);
+
   const [title, setTitle] = useState('');
 
   const [title2, setTitle2] = useState('');
@@ -93,105 +82,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <TableContainer component={Paper}>
-        {annaCost.length > 0 && (
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">costItem</TableCell>
-                <TableCell align="right">category</TableCell>
-                <TableCell align="right">description</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {annaCost.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.costItem}</TableCell>
-                  <TableCell>{row.category}</TableCell>
-                  <TableCell>{row.description}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
-      </TableContainer>
-      <Fab className={classes.testButton} onClick={() => setOpen(true)}>
-        <AddIcon />
-      </Fab>
-
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
+      <UsersTable annaCost={annaCost} />
+      <AddUserFab setOpen={setOpen} classes={classes} />
+      <UserModal
+        handleSubmit={handleSubmit}
+        title={title}
+        title2={title2}
+        title3={title3}
+        classes={classes}
+        setOpen={setOpen}
+        setTitle={setTitle}
+        setTitle2={setTitle2}
+        setTitle3={setTitle3}
+        classes={classes}
         open={open}
-        onClose={() => setOpen(false)}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <form>
-              <Typography>
-                <TextField
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  fullWidth
-                  variant="outlined"
-                  margin="20"
-                  label="Cost Item"
-                />
-
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="grouped-native-select">
-                    Grouping
-                  </InputLabel>
-                  <Select
-                    native
-                    defaultValue=""
-                    id="grouped-native-select"
-                    value={title2}
-                    onChange={(e) => setTitle2(e.target.value)}
-                  >
-                    <option value="food"> food </option>
-                    <option value="clothes"> clothes </option>
-                    <option value="furniture"> furniture </option>
-                    <option value="gym"> gym </option>
-                  </Select>
-                </FormControl>
-                <div>
-                  <TextareaAutosize
-                    value={title3}
-                    onChange={(e) => setTitle3(e.target.value)}
-                    aria-label="empty textarea"
-                    placeholder="Empty"
-                  />
-                </div>
-
-                <div className="btn-style">
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    className={classes.customStyle}
-                  >
-                    Add
-                  </Button>
-                  <Button
-                    onClick={() => setOpen(false)}
-                    variant="contained"
-                    className={classes.customStyle}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              </Typography>
-            </form>
-          </div>
-        </Fade>
-      </Modal>
+      />
     </div>
   );
 };
