@@ -4,6 +4,9 @@ import { useState } from 'react';
 import AddUserFab from './AddUserFab';
 import UserModal from './UserModal';
 import UsersTable from './UsersTable';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -15,6 +18,13 @@ const useStyles = makeStyles((theme) =>
     },
   })
 );
+const AddUser = styled(Fab)`
+  background-color: tomato;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 const App = () => {
   const [annaCost, setAnnaCost] = useState([]);
@@ -43,7 +53,9 @@ const App = () => {
   return (
     <div className="App">
       <UsersTable annaCost={annaCost} />
-      <AddUserFab setOpen={setOpen} classes={classes} />
+      {annaCost.length > 0 && (
+        <AddUserFab setOpen={setOpen} classes={classes} />
+      )}
       <UserModal
         handleSubmit={handleSubmit}
         title={title}
@@ -57,6 +69,11 @@ const App = () => {
         classes={classes}
         open={open}
       />
+      {annaCost.length == 0 && (
+        <AddUser onClick={() => setOpen(true)}>
+          <AddIcon />
+        </AddUser>
+      )}
     </div>
   );
 };

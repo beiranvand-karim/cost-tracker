@@ -1,4 +1,3 @@
-import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import React from 'react';
 import styled from 'styled-components';
+import { Dialog } from '@material-ui/core';
 
 const UserModal = ({
   handleSubmit,
@@ -27,13 +27,7 @@ const UserModal = ({
     color: tomato;
     border-color: tomato;
   `;
-  const ModalUser = styled(Modal)`
-    display: flex;
-    align-content: center;
-    align-items: center;
-    align-content: center;
-    margin-left: 425px;
-  `;
+
   const AddButton = styled(Button)`
     color: green;
     border-color: tomato;
@@ -45,7 +39,7 @@ const UserModal = ({
   `;
   return (
     <div className="user-modal">
-      <ModalUser
+      <Dialog
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -110,7 +104,7 @@ const UserModal = ({
             </form>
           </div>
         </Fade>
-      </ModalUser>
+      </Dialog>
     </div>
   );
 };
