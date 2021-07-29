@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import React from 'react';
+import styled from 'styled-components';
 
 const UserModal = ({
   handleSubmit,
@@ -22,12 +23,31 @@ const UserModal = ({
   setTitle3,
   classes,
 }) => {
+  const TomatoButton = styled(Button)`
+    color: tomato;
+    border-color: tomato;
+  `;
+  const ModalUser = styled(Modal)`
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 425px;
+  `;
+  const AddButton = styled(Button)`
+    color: green;
+    border-color: tomato;
+    margin: 10px;
+  `;
+  const UserForm = styled(FormControl)`
+    margin: theme.spacing(1);
+    min-width: 120px;
+  `;
   return (
     <div className="user-modal">
-      <Modal
+      <ModalUser
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        className={classes.modal}
         open={open}
         onClose={() => setOpen(false)}
         closeAfterTransition
@@ -49,7 +69,7 @@ const UserModal = ({
                   label="Cost Item"
                 />
 
-                <FormControl className={classes.formControl}>
+                <UserForm>
                   <InputLabel htmlFor="grouped-native-select">
                     Grouping
                   </InputLabel>
@@ -65,7 +85,7 @@ const UserModal = ({
                     <option value="furniture"> furniture </option>
                     <option value="gym"> gym </option>
                   </Select>
-                </FormControl>
+                </UserForm>
                 <div>
                   <TextareaAutosize
                     value={title3}
@@ -76,26 +96,21 @@ const UserModal = ({
                 </div>
 
                 <div className="btn-style">
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    className={classes.customStyle}
-                  >
+                  <AddButton variant="contained" onClick={handleSubmit}>
                     Add
-                  </Button>
-                  <Button
+                  </AddButton>
+                  <TomatoButton
                     onClick={() => setOpen(false)}
                     variant="contained"
-                    className={classes.customStyle}
                   >
                     Cancel
-                  </Button>
+                  </TomatoButton>
                 </div>
               </Typography>
             </form>
           </div>
         </Fade>
-      </Modal>
+      </ModalUser>
     </div>
   );
 };
