@@ -4,53 +4,15 @@ import { useState } from 'react';
 import AddUserFab from './AddUserFab';
 import UserModal from './UserModal';
 import UsersTable from './UsersTable';
-=======
-
-
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    modal: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     paper: {
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    testButton: {
-      position: 'absolute',
-      right: -16,
-      bottom: -16,
-      transform: 'translate(-50%, -50%)',
-      marginTop: 40,
-    },
-    tableStyle: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignContent: 'center',
-      flexDirection: 'column',
-      marginTop: 40,
-    },
-    costStyle: {
-      alignSelf: 'center',
-      textAlign: 'center',
-    },
-    catgryStyle: {
-      order: 1,
-    },
-    dscrpStyle: {
-      order: 2,
-    },
-    bodyStyle: {},
   })
 );
 
@@ -58,8 +20,6 @@ const App = () => {
   const [annaCost, setAnnaCost] = useState([]);
 
   const [open, setOpen] = useState(false);
-
-  const [open1, setOpen1] = useState(true);
 
   const [title, setTitle] = useState('');
 
