@@ -43,7 +43,10 @@ const App = () => {
   const classes = useStyles();
 
   const addUser = (e) => {
-    dispatch({ type: 'AddTable', payload: e.target.value });
+    dispatch({
+      type: 'AddTable',
+      payload: { costItem: title, category: title2, description: title3 },
+    });
     setOpen(false);
     console.log(annaCost);
   };

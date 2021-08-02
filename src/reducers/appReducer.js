@@ -1,5 +1,5 @@
 const initialState = {
-  annaCost: [{ costItem: 's', category: 'ss', description: 'sss' }],
+  annaCost: [],
 };
 
 function appReducer(state = initialState, action) {
