@@ -11,6 +11,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Dialog } from '@material-ui/core';
 
+
 const UserModal = ({
   addUser,
   title,
@@ -27,7 +28,15 @@ const UserModal = ({
     color: tomato;
     border-color: tomato;
   `;
-  //ss
+
+  const ModalUser = styled(Modal)`
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 425px;
+  `;
+
   const AddButton = styled(Button)`
     color: green;
     border-color: tomato;
@@ -38,9 +47,15 @@ const UserModal = ({
     min-width: 120px;
   `;
 
+
   return (
     <div className="user-modal">
       <Dialog
+
+  return (
+    <div className="user-modal">
+      <ModalUser
+
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -91,7 +106,13 @@ const UserModal = ({
                 </div>
 
                 <div className="btn-style">
+
                   <AddButton variant="contained" onClick={addUser}>
+                    Add
+                  </AddButton>
+
+
+                  <AddButton variant="contained" onClick={handleSubmit}>
                     Add
                   </AddButton>
 
@@ -106,7 +127,11 @@ const UserModal = ({
             </form>
           </div>
         </Fade>
+
       </Dialog>
+
+      </ModalUser>
+
     </div>
   );
 };
