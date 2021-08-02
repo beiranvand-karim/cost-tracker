@@ -5,6 +5,12 @@ import AddUserFab from './AddUserFab';
 import UserModal from './UserModal';
 import UsersTable from './UsersTable';
 
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     paper: {
@@ -15,9 +21,18 @@ const useStyles = makeStyles((theme) =>
     },
   })
 );
+const AddUser = styled(Fab)`
+  background-color: tomato;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 const App = () => {
-  const [annaCost, setAnnaCost] = useState([]);
+  const annaCost = useSelector((state) => state.annaCost);
+  console.log(annaCost);
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
@@ -29,23 +44,23 @@ const App = () => {
 
   const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAnnaCost((values) =>
-      setAnnaCost([
-        ...values,
-        { costItem: title, category: title2, description: title3 },
-      ])
-    );
+  const addUser = (e) => {
+    dispatch({
+      type: 'AddTable',
+      payload: { costItem: title, category: title2, description: title3 },
+    });
     setOpen(false);
+    console.log(annaCost);
   };
 
   return (
     <div className="App">
       <UsersTable annaCost={annaCost} />
-      <AddUserFab setOpen={setOpen} classes={classes} />
+      {annaCost.length > 0 && (
+        <AddUserFab setOpen={setOpen} classes={classes} />
+      )}
       <UserModal
-        handleSubmit={handleSubmit}
+        addUser={addUser}
         title={title}
         title2={title2}
         title3={title3}
@@ -57,6 +72,11 @@ const App = () => {
         classes={classes}
         open={open}
       />
+      {annaCost.length == 0 && (
+        <AddUser onClick={() => setOpen(true)}>
+          <AddIcon />
+        </AddUser>
+      )}
     </div>
   );
 };
