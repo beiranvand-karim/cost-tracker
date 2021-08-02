@@ -7,6 +7,7 @@ import UsersTable from './UsersTable';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -27,7 +28,9 @@ const AddUser = styled(Fab)`
 `;
 
 const App = () => {
-  const [annaCost, setAnnaCost] = useState([]);
+  const annaCost = useSelector((state) => state.annaCost);
+  console.log(annaCost);
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
@@ -39,15 +42,10 @@ const App = () => {
 
   const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAnnaCost((values) =>
-      setAnnaCost([
-        ...values,
-        { costItem: title, category: title2, description: title3 },
-      ])
-    );
+  const addUser = (e) => {
+    dispatch({ type: 'AddTable', payload: e.target.value });
     setOpen(false);
+    console.log(annaCost);
   };
 
   return (
@@ -57,7 +55,7 @@ const App = () => {
         <AddUserFab setOpen={setOpen} classes={classes} />
       )}
       <UserModal
-        handleSubmit={handleSubmit}
+        addUser={addUser}
         title={title}
         title2={title2}
         title3={title3}

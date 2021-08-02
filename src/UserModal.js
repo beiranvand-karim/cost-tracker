@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import { Dialog } from '@material-ui/core';
 
 const UserModal = ({
-  handleSubmit,
+  addUser,
   title,
   title2,
   title3,
@@ -27,7 +27,7 @@ const UserModal = ({
     color: tomato;
     border-color: tomato;
   `;
-
+  //ss
   const AddButton = styled(Button)`
     color: green;
     border-color: tomato;
@@ -37,6 +37,7 @@ const UserModal = ({
     margin: theme.spacing(1);
     min-width: 120px;
   `;
+
   return (
     <div className="user-modal">
       <Dialog
@@ -90,9 +91,10 @@ const UserModal = ({
                 </div>
 
                 <div className="btn-style">
-                  <AddButton variant="contained" onClick={handleSubmit}>
+                  <AddButton variant="contained" onClick={addUser}>
                     Add
                   </AddButton>
+
                   <TomatoButton
                     onClick={() => setOpen(false)}
                     variant="contained"

@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 
 const UsersTable = ({ annaCost }) => {
+  console.log(annaCost);
   return (
     <div className="users-table">
       <TableContainer component={Paper}>
