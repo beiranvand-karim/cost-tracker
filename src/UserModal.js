@@ -26,6 +26,11 @@ const UserModal = ({
 }) => {
   const TomatoButton = styled(Button)`
     color: tomato;
+
+    font-size: 13px;
+    font-style: oblique;
+    font-weight: bold;
+
     border-color: tomato;
   `;
 
@@ -35,12 +40,42 @@ const UserModal = ({
     align-items: center;
     align-content: center;
     margin-left: 425px;
+
   `;
 
   const AddButton = styled(Button)`
     color: green;
     border-color: tomato;
     margin: 10px;
+
+    font-style: oblique;
+    font-weight: bold;
+  `;
+  const UserForm = styled(FormControl)`
+    min-width: 220px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    font-weight: bold;
+  `;
+  const CostField = styled(TextField)`
+    margin-bottom: 10px;
+  `;
+  const DescField = styled(TextareaAutosize)`
+    margin-top: 20px;
+  `;
+  const SelectOption = styled(Select)`
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+  `;
+
+  return (
+    <div className="user-modal">
+      <Dialog
+=======
   `;
   const UserForm = styled(FormControl)`
     margin: theme.spacing(1);
@@ -56,6 +91,7 @@ const UserModal = ({
     <div className="user-modal">
       <ModalUser
 
+
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -68,16 +104,61 @@ const UserModal = ({
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <form>
-              <Typography>
-                <TextField
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+            <form noValidate autoComplete="off">
+              <TextField
+                className={classes.txtStyle}
+                value={title}
+                color="primary"
+                onChange={(e) => setTitle(e.target.value)}
+                fullWidth
+                variant="outlined"
+                placeholder="Cost Itmes"
+                multiline
+                rows={2}
+              />
+
+              <UserForm>
+                <InputLabel htmlFor="grouped-native-select">
+                  Category
+                </InputLabel>
+                <SelectOption
+                  native
                   fullWidth
+                  value={title2}
+                  onChange={(e) => setTitle2(e.target.value)}
+                  color="primary"
+                >
+                  <option value="food"> food </option>
+                  <option value="clothes"> clothes </option>
+                  <option value="furniture"> furniture </option>
+                  <option value="gym"> gym </option>
+                </SelectOption>
+              </UserForm>
+              <div>
+                <TextField
+                  color="primary"
+                  fullWidth
+                  multiline
+                  rows={3}
                   variant="outlined"
-                  margin="20"
-                  label="Cost Item"
+                  value={title3}
+                  onChange={(e) => setTitle3(e.target.value)}
+                  placeholder="description"
                 />
+              </div>
+
+
+              <AddButton variant="contained" onClick={addUser}>
+                Add
+              </AddButton>
+
+              <TomatoButton onClick={() => setOpen(false)} variant="contained">
+                Cancel
+              </TomatoButton>
+            </form>
+          </div>
+        </Fade>
+      </Dialog>
 
                 <UserForm>
                   <InputLabel htmlFor="grouped-native-select">
