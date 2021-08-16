@@ -4,10 +4,12 @@ import { useState } from 'react';
 import AddUserFab from './AddUserFab';
 import UserModal from './UserModal';
 import UsersTable from './UsersTable';
+
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -23,6 +25,9 @@ const AddUser = styled(Fab)`
   position: absolute;
   top: 50%;
   left: 50%;
+
+  transform: translate(-50%, -50%);
+
 `;
 
 const App = () => {

@@ -40,6 +40,7 @@ const StyledTableRow = withStyles((theme) =>
 )(TableRow);
 
 const UsersTable = ({ annaCost }) => {
+
   const useStyles = makeStyles({
     table: {
       minWidth: 700,
@@ -47,6 +48,7 @@ const UsersTable = ({ annaCost }) => {
   });
 
   const classes = useStyles();
+
   console.log(annaCost);
   return (
     <div className="users-table">
